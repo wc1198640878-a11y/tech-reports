@@ -1,0 +1,56 @@
+{
+  "_说明": "报告仓库的同步配置。改这里就能增删报告，不用动 sync.ps1。",
+
+  "gitExe": "D:\\Cache-DATA\\DSH-工作台\\.tools\\MinGit\\cmd\\git.exe",
+  "sourceRoot": "D:\\Cache-DATA\\DSH-工作台",
+  "branch": "main",
+
+  "_remote说明": "填你的仓库地址。HTTPS 例：https://github.com/你的用户名/仓库名.git ；SSH 例：git@github.com:你的用户名/仓库名.git",
+  "remote": "",
+
+  "_mappings说明": "source 相对 sourceRoot，target 相对本仓库根目录。按顺序决定 README 索引里的排列。",
+  "mappings": [
+    {
+      "source": "wukong-autododge\\自动闪避Mod原理报告.md",
+      "target": "docs\\黑神话-自动闪避\\01-原理总览.md"
+    },
+    {
+      "source": "wukong-autododge\\运作原理报告.md",
+      "target": "docs\\黑神话-自动闪避\\02-运作原理.md"
+    },
+    {
+      "source": "wukong-autododge\\Harmony适用边界与问题归类.md",
+      "target": "docs\\黑神话-自动闪避\\03-Harmony边界与问题归类.md"
+    },
+    {
+      "source": "wukong-autododge\\最终交付说明.md",
+      "target": "docs\\黑神话-自动闪避\\04-最终交付说明.md"
+    },
+    {
+      "source": "wukong-autododge\\结项记录.md",
+      "target": "docs\\黑神话-自动闪避\\05-结项记录.md"
+    },
+    {
+      "source": "wh3-battle-ai\\原理与对照.md",
+      "target": "docs\\战锤3-自动指挥\\01-原理与对照.md"
+    },
+    {
+      "source": "wh3-battle-ai\\notes\\design.md",
+      "target": "docs\\战锤3-自动指挥\\02-设计文档.md"
+    },
+    {
+      "source": "wh3-battle-ai\\notes\\rule-layer-design.md",
+      "target": "docs\\战锤3-自动指挥\\03-规则层设计.md"
+    },
+    {
+      "source": "wh3-battle-ai\\README.md",
+      "target": "docs\\战锤3-自动指挥\\04-项目说明.md"
+    }
+  ],
+
+  "_索引说明": "README 索引里每个条目的显示名与一句话简介；不填则自动从文件的一级标题和首段提取。",
+  "titles": {
+    "docs\\黑神话-自动闪避": "黑神话：悟空 · 自动闪避 Mod",
+    "docs\\战锤3-自动指挥": "全面战争：战锤3 · 自动指挥 Mod"
+  }
+}

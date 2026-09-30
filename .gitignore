@@ -1,0 +1,20 @@
+# 系统与临时文件
+Thumbs.db
+desktop.ini
+*.tmp
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 不提交任何二进制/样本（只放 markdown 报告）
+*.dll
+*.exe
+*.pack
+*.zip
+*.7z
+*.dmp
+
+# 本地覆盖配置（如果以后要放 token 之类）
+tools/config.local.json
