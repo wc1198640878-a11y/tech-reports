@@ -163,6 +163,8 @@ if (-not (Test-Path (Join-Path $RepoRoot '.git'))) {
     Say "  已初始化（branch=$($cfg.branch)，已关闭换行符转换与路径转义）"
 }
 
+# 防御：core.sshCommand 若被设成 Windows 路径会让 sh 吃掉反斜杠导致推送失败
+Invoke-Git config --unset core.sshCommand 2>&1 | Out-Null
 Invoke-Git add -A | Out-Null
 $staged = Invoke-Git diff --cached --name-only
 if (-not $staged -or $staged.Count -eq 0) {

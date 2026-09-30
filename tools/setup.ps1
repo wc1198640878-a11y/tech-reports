@@ -57,6 +57,10 @@ if (-not (Test-Path (Join-Path $RepoRoot '.git'))) {
     Invoke-Git init -b $cfg.branch | Out-Null
     Invoke-Git config core.autocrlf false | Out-Null
     Invoke-Git config core.quotepath false | Out-Null
+    # 关键：不要设 core.sshCommand！git 会把它当 shell 命令执行，
+    # Windows 路径里的反斜杠会被 sh 吃掉 → 找不到 ssh → 推送失败。
+    # MinGit 自带 usr\bin\ssh.exe，git 会自动找到它。
+    Invoke-Git config --unset core.sshCommand 2>&1 | Out-Null
     Say "  已初始化仓库"
 }
 
@@ -78,7 +82,10 @@ if ($RepoUrl -notmatch '^git@') {
     Say "  找不到 ssh.exe，跳过自检" 'DarkYellow'
 } else {
     $prev = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
-    $out = & $sshExe -o UserKnownHostsFile="$known" -T git@github.com 2>&1
+    # BatchMode=yes + ConnectTimeout：任何需要交互的情况都直接失败，不会卡住
+    $out = & $sshExe -o BatchMode=yes -o ConnectTimeout=10 `
+                     -o UserKnownHostsFile="$known" -o StrictHostKeyChecking=accept-new `
+                     -T git@github.com 2>&1
     $ErrorActionPreference = $prev
     $text = ($out | ForEach-Object { "$_" }) -join "`n"
     if ($text -match 'successfully authenticated') {

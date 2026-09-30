@@ -6,7 +6,7 @@
   "branch": "main",
 
   "_remote说明": "填你的仓库地址。HTTPS 例：https://github.com/你的用户名/仓库名.git ；SSH 例：git@github.com:你的用户名/仓库名.git",
-  "remote": "",
+  "remote": "git@github.com:wc1198640878-a11y/tech-reports.git",
 
   "_mappings说明": "source 相对 sourceRoot，target 相对本仓库根目录。按顺序决定 README 索引里的排列。",
   "mappings": [
